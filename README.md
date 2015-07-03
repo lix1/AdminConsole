@@ -1,27 +1,4 @@
-#  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 
-> The best module ever.
-
-
-## Install
-
-```sh
-$ npm install --save adminconsole
-```
-
-
-## Usage
-
-```js
-var adminconsole = require('adminconsole');
-
-adminconsole('Rainbow');
-```
-
-
-## License
-
-MIT © [Xiao Xin Li]()
 
 
 [npm-image]: https://badge.fury.io/js/adminconsole.svg
