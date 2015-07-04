@@ -8,4 +8,4 @@ var IntroSchema = new Schema({
   index:          { type: Number, 'default': 0 }
 });
 
-module.exports = mongoose.model('Image', ImageSchema);
+module.exports = mongoose.model('Intro', IntroSchema);
