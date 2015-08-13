@@ -14,7 +14,7 @@ module.exports = function(app) {
     layoutsDir: app.get('views') + '/layouts',
     partialsDir: [app.get('views') + '/partials']
   }).engine);
-  app.set('view engine', 'handlebars');
+  app.set('view engine', 'jade');
 
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({
@@ -26,7 +26,7 @@ module.exports = function(app) {
 
   routes.initialize(app, new express.Router());
 
-  app.use('/public/', express.static(path.join(__dirname, '../public')));
+  app.use(express.static('public'));
 
   if ('development' === app.get('env')) {
     app.use(errorHandler());

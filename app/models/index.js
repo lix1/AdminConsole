@@ -1,3 +1,4 @@
 module.exports = {
-  'Intro': require('./intro')
+  'Intro': require('./intro'),
+  'Hospital': require('./hospital')
 };

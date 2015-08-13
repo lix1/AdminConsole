@@ -1,0 +1,20 @@
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel b-a" ng-repeat="news in newsList">
+                <div class="panel-body">
+                    <span class="clear">
+                      <span class="text-lg">{{news.title}}</span>
+                        <div class="line line-dashed b-b"></div>
+                      <small class="text-muted clear" ng-repeat="parag in news.description">{{parag}}</small>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-12">
+          <button class="btn m-b-xs w-xs btn-success">Success</button>
+        </div>
+    </div>
+</div>
+

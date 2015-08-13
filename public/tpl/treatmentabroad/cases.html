@@ -1,0 +1,55 @@
+<div ng-controller="CasesCtrl">
+    <div class="well b bg-light lt wrapper-sm m-t">{{selectedCases.type}}</div>
+
+    <div class="row">
+
+        <div class="col-lg-10">
+
+            <div>
+                <div class="panel panel-default" ng-repeat="case in selectedCases.list">
+                    <div class="panel-body">
+                        <div class="clearfix">
+                            <a class="pull-left thumb-md b-3x m-r" href="">
+                                <img alt="..." src="img/a2.jpg">
+                            </a>
+                            <div class="clear">
+                                <div class="h3 m-t-xs m-b-xs">
+                                    {{case.name}}
+                                </div>
+                                <small class="text-muted">{{case.description}}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel b-a">
+                <div class="panel-heading b-b b-light">
+                    <a href class="font-bold">{{selectedCases.type}}</a>
+                </div>
+                <ul class="list-group list-group-lg no-bg auto">
+                    <li class="list-group-item clearfix" ng-repeat="case in selectedCases.list">
+                        <span class="pull-left thumb-sm avatar m-r">
+                          <img src="img/a4.jpg" alt="...">
+                        </span>
+                        <span class="clear">
+                          <span>{{case.name}}</span>
+                          <small class="text-muted clear text-ellipsis">{{case.description}}</small>
+                        </span>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+        <div class="col-lg-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" ng-repeat="case in caseList" ng-class="{active: $index==selectedIndex}"><a ng-click="navChanged($event,$index)">{{case.type}}</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+</div>
+

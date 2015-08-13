@@ -3,9 +3,9 @@ var mongoose = require('mongoose'),
   path = require('path');
 
 var IntroSchema = new Schema({
-  title:          { type: String },
+  title:          { type: String, trim: true },
   description:    { type: String },
-  index:          { type: Number, 'default': 0 }
+  index:          { type: Number, min: 1, max: 6}
 });
 
 module.exports = mongoose.model('Intro', IntroSchema);

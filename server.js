@@ -5,7 +5,7 @@ var express = require('express'),
 
 app.set('appName', 'RCI');
 app.set('port', process.env.PORT || 3300);
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/public');
 app = config(app);
 
 mongoose.connect('mongodb://localhost/RCI');

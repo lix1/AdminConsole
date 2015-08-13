@@ -1,0 +1,9 @@
+<div>
+    <ul class="breadcrumb bg-white b-a">
+        <li><a ui-sref="app.tabs.hospitals.list"><i class="fa fa-list-ul"></i> Hospitals</a></li>
+        <li class="active">{{hospital.name}}</li>
+    </ul>
+</div>
+
+<div ng-include="'tpl/treatmentabroad/hospitalDetails/hospitalDetail_'+hospital.id+'.html'">
+</div>

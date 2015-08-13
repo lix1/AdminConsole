@@ -26,7 +26,7 @@ module.exports = {
   },
   create: function(req, res) {
     // insert the new item into the collection (validate first)
-    if(req.body.title && req.body.description && req.body.index) {
+    if(req.body.title && req.body.index) {
       // validate index doesn't exist
       findIntroByIndex(req.body.index, function(item){
         // found intro with index
@@ -51,7 +51,7 @@ module.exports = {
         res.json(500, { error: errMsg });
       });
     } else {
-      res.json(500, { error: 'Bad request: missing intro title, description, or index' });
+      res.json(500, { error: 'Bad request: missing intro title or index' });
     }
   },
   update: function(req, res) {

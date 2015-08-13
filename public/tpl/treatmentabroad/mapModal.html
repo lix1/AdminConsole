@@ -1,0 +1,49 @@
+<div class="modal-header">
+    <h3 class="modal-title">
+        {{hospital.name}}
+    </h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-lg-8">
+            <div style="height:240px;" ui-jq="vectorMap" ui-options="{
+            map: 'us_aea_en',
+            markers: {{marker}},
+            backgroundColor: '#fff',
+            markerStyle: {
+              initial: {
+                fill: '{{color.warning}}'
+              }
+            },
+            regionStyle: {
+              initial: {
+                fill: '{{color.info}}'
+              }
+            },
+            series: {
+              markers: [{
+                attribute: 'r',
+                scale: [5, 15],
+                values: [
+                  187.70
+                ]
+              }]
+            }
+          }" />
+        </div>
+        <div class="col-lg-4">
+            <div class="panel b-a">
+            <div class="panel-body">
+                <p>{{hospital.address}}<br>
+                {{hospital.city}}, {{hospital.state}} {{hospital.zipcode}}</p>
+                <div class="line b-b"></div>
+                <p>{{hospital.phoneNumber}}</p>
+            </div>
+        </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-danger" ng-click="cancel()">关闭</button>
+</div>
