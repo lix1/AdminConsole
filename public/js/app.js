@@ -14,7 +14,6 @@ var app = angular.module('app', [
     'ui.validate',
         'ui.router.tabs',
     'oc.lazyLoad',
-    'pascalprecht.translate',
         'app.treatmentAbroadCtrl',
     'app.filters',
     'app.services',
@@ -32,7 +31,7 @@ var app = angular.module('app', [
 .config(
   [          '$stateProvider', '$urlRouterProvider', '$controllerProvider', '$compileProvider', '$filterProvider', '$provide',
     function ($stateProvider,   $urlRouterProvider,   $controllerProvider,   $compileProvider,   $filterProvider,   $provide) {
-        
+
         // lazy controller, directive and service
         app.controller = $controllerProvider.register;
         app.directive  = $compileProvider.directive;
@@ -106,25 +105,6 @@ var app = angular.module('app', [
   ]
 )
 
-// translate config
-.config(['$translateProvider', function($translateProvider){
-
-  // Register a loader for the static files
-  // So, the module will search missing translation tables under the specified urls.
-  // Those urls are [prefix][langKey][suffix].
-  $translateProvider.useStaticFilesLoader({
-    prefix: 'l10n/',
-    suffix: '.js'
-  });
-
-  // Tell the module what language to use by default
-  $translateProvider.preferredLanguage('en');
-
-  // Tell the module to store the language in the local storage
-  $translateProvider.useLocalStorage();
-
-}])
-
 /**
  * jQuery plugin config use ui-jq directive , config the js and css files that required
  * key: function name of the jQuery plugin
@@ -133,7 +113,7 @@ var app = angular.module('app', [
 .constant('JQ_CONFIG', {
     easyPieChart:   ['js/jquery/charts/easypiechart/jquery.easy-pie-chart.js'],
     sparkline:      ['js/jquery/charts/sparkline/jquery.sparkline.min.js'],
-    plot:           ['js/jquery/charts/flot/jquery.flot.min.js', 
+    plot:           ['js/jquery/charts/flot/jquery.flot.min.js',
                         'js/jquery/charts/flot/jquery.flot.resize.js',
                         'js/jquery/charts/flot/jquery.flot.tooltip.min.js',
                         'js/jquery/charts/flot/jquery.flot.spline.js',
@@ -155,7 +135,7 @@ var app = angular.module('app', [
     dataTable:      ['js/jquery/datatables/jquery.dataTables.min.js',
                         'js/jquery/datatables/dataTables.bootstrap.js',
                         'js/jquery/datatables/dataTables.bootstrap.css'],
-    vectorMap:      ['js/jquery/jvectormap/jquery-jvectormap.min.js', 
+    vectorMap:      ['js/jquery/jvectormap/jquery-jvectormap.min.js',
                         'js/jquery/jvectormap/jquery-jvectormap-world-mill-en.js',
                         'js/jquery/jvectormap/jquery-jvectormap-us-aea-en.js',
                         'js/jquery/jvectormap/jquery-jvectormap.css'],
@@ -190,7 +170,7 @@ var app = angular.module('app', [
             },
             {
                 name: 'toaster',
-                files: [                    
+                files: [
                     'js/modules/toaster/toaster.js',
                     'js/modules/toaster/toaster.css'
                 ]

@@ -34,7 +34,7 @@ angular.module('app.directives', ['ui.load'])
             ;
 
         !prev.length && (parent = _el.parent());
-        
+
         function sm(){
           $timeout(function () {
             var method = attr.uiShift;
@@ -42,7 +42,7 @@ angular.module('app.directives', ['ui.load'])
             _el.hasClass('in') || _el[method](target).addClass('in');
           });
         }
-        
+
         function md(){
           parent && parent['prepend'](el);
           !parent && _el['insertAfter'](prev);
@@ -72,7 +72,7 @@ angular.module('app.directives', ['ui.load'])
               targets = (attr.target && attr.target.split(',')) || Array(el),
               key = 0;
           angular.forEach(classes, function( _class ) {
-            var target = targets[(targets.length && key)];            
+            var target = targets[(targets.length && key)];
             ( _class.indexOf( '*' ) !== -1 ) && magic(_class, target);
             $( target ).toggleClass(_class);
             key ++;
@@ -80,11 +80,11 @@ angular.module('app.directives', ['ui.load'])
           $(el).toggleClass('active');
 
           function magic(_class, target){
-            var patt = new RegExp( '\\s' + 
+            var patt = new RegExp( '\\s' +
                 _class.
                   replace( /\*/g, '[A-Za-z0-9-_]+' ).
                   split( ' ' ).
-                  join( '\\s|\\s' ) + 
+                  join( '\\s|\\s' ) +
                 '\\s', 'g' );
             var cn = ' ' + $(target)[0].className + ' ';
             while ( patt.test( cn ) ) {
@@ -100,10 +100,10 @@ angular.module('app.directives', ['ui.load'])
     return {
       restrict: 'AC',
       link: function(scope, el, attr) {
-        var _window = $(window), 
-        _mb = 768, 
-        wrap = $('.app-aside'), 
-        next, 
+        var _window = $(window),
+        _mb = 768,
+        wrap = $('.app-aside'),
+        next,
         backdrop = '.dropdown-backdrop';
         // unfolded
         el.on('click', 'a', function(e) {
@@ -132,7 +132,7 @@ angular.module('app.directives', ['ui.load'])
           }else{
             return;
           }
-         
+
           _this.parent().addClass('active');
           top = _this.parent().position().top + offset;
           next.css('top', top);
@@ -188,7 +188,7 @@ angular.module('app.directives', ['ui.load'])
           }
           el.on('click', function(){
             var target;
-            attr.target && ( target = $(attr.target)[0] );            
+            attr.target && ( target = $(attr.target)[0] );
             screenfull.toggle(target);
           });
           $document.on(screenfull.raw.fullscreenchange, function () {
@@ -206,7 +206,7 @@ angular.module('app.directives', ['ui.load'])
      return {
       restrict: 'AC',
       template:'<span class="bar"></span>',
-      link: function(scope, el, attrs) {        
+      link: function(scope, el, attrs) {
         el.addClass('butterbar hide');
         scope.$on('$stateChangeStart', function(event) {
           $anchorScroll();
