@@ -52,25 +52,25 @@ var app = angular.module('app', [
             })
             .state('app.console', {
                 url:        '',
-                templateUrl:'tpl/treatmentabroad/console.html'
+                templateUrl:'tpl/console/console.html'
             }).state('app.console.home', {
                 url:        '/home',
                 controller: 'HomeCtrl',
-                templateUrl:'tpl/treatmentabroad/home.html'
+                templateUrl:'tpl/console/home.html'
             }).state('app.console.services', {
                 url:        '/services',
                 controller: 'ServicesCtrl',
-                templateUrl:'tpl/treatmentabroad/services.html'
+                templateUrl:'tpl/console/services.html'
             })
             .state('app.console.hospitals', {
                 url: '/hospitals',
-                templateUrl:'tpl/treatmentabroad/hospitals.html'
+                templateUrl:'tpl/console/hospitals.html'
             })
             .state('app.console.hospitals.list', {
                 url: '/list',
                 views: {
                     'list': {
-                        templateUrl:'tpl/treatmentabroad/hospitalList.html',
+                        templateUrl:'tpl/console/hospitalList.html',
                         controller: 'HospitalsCtrl'
                     }
                 }
@@ -80,13 +80,13 @@ var app = angular.module('app', [
                 views: {
                     'detail': {
                         controller: 'HospitalDetailCtrl',
-                        templateUrl:'tpl/treatmentabroad/hospitalDetail.html'
+                        templateUrl:'tpl/console/hospitalDetail.html'
                     }
                 }
             }).state('app.tabs.contactus', {
                 url:        '/contactus',
                 controller: 'ContactUSCtrl',
-                templateUrl:'tpl/treatmentabroad/contactus.html'
+                templateUrl:'tpl/console/contactus.html'
             })
 
 

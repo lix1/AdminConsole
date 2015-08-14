@@ -8,7 +8,7 @@ module.exports.initialize = function(app, router) {
   app.get('/rest/intro', intro.all);
   app.post('/rest/intro', intro.create);
   app.put('/rest/intro', intro.update);
-  app.delete('/intro/:id', intro.delete);
+  app.delete('/rest/intro/:id', intro.delete);
 
   app.get('/rest/hospital', hospital.all);
   app.get('/rest/hospital/:id', hospital.get);
