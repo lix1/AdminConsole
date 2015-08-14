@@ -5,16 +5,16 @@ var home = require('../app/controllers/home'),
 module.exports.initialize = function(app, router) {
   router.get('/', home.index);
 
-  app.get('/intro', intro.all);
-  app.post('/intro', intro.create);
-  app.put('/intro', intro.update);
+  app.get('/rest/intro', intro.all);
+  app.post('/rest/intro', intro.create);
+  app.put('/rest/intro', intro.update);
   app.delete('/intro/:id', intro.delete);
 
-  app.get('/hospital', hospital.all);
-  app.get('/hospital/:id', hospital.get);
-  app.post('/hospital', hospital.create);
-  app.put('/hospital', hospital.update);
-  app.delete('/hospital/:id', hospital.delete);
+  app.get('/rest/hospital', hospital.all);
+  app.get('/rest/hospital/:id', hospital.get);
+  app.post('/rest/hospital', hospital.create);
+  app.put('/rest/hospital', hospital.update);
+  app.delete('/rest/hospital/:id', hospital.delete);
 
   app.get('/adminConsole', function(req, res){
     res.render('index.jade');

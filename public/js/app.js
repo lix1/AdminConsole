@@ -14,7 +14,7 @@ var app = angular.module('app', [
     'ui.validate',
     'ui.router.tabs',
     'oc.lazyLoad',
-    'app.treatmentAbroadCtrl',
+    'app.consoleCtrl',
     'app.filters',
     'app.services',
     'app.directives',
@@ -50,24 +50,23 @@ var app = angular.module('app', [
                 url: '/app',
                 templateUrl: 'tpl/app.html'
             })
-            .state('app.tabs', {
+            .state('app.console', {
                 url:        '',
-                controller: 'TabsController',
-                templateUrl:'tpl/treatmentabroad/tabs.html'
-            }).state('app.tabs.home', {
+                templateUrl:'tpl/treatmentabroad/console.html'
+            }).state('app.console.home', {
                 url:        '/home',
                 controller: 'HomeCtrl',
                 templateUrl:'tpl/treatmentabroad/home.html'
-            }).state('app.tabs.services', {
+            }).state('app.console.services', {
                 url:        '/services',
                 controller: 'ServicesCtrl',
                 templateUrl:'tpl/treatmentabroad/services.html'
             })
-            .state('app.tabs.hospitals', {
+            .state('app.console.hospitals', {
                 url: '/hospitals',
                 templateUrl:'tpl/treatmentabroad/hospitals.html'
             })
-            .state('app.tabs.hospitals.list', {
+            .state('app.console.hospitals.list', {
                 url: '/list',
                 views: {
                     'list': {
