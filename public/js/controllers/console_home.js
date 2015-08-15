@@ -15,7 +15,7 @@ angular.module('app.consoleHomeCtrl', [])
     $scope.showAddModal = function() {
       var modalInstance = $modal.open({
         templateUrl: 'tpl/console/modal/AddUpdateIntroModal.html',
-        controller: 'AddModalCtrl',
+        controller: 'AddIntroductionModalCtrl',
         size: 'lg'
       });
 
@@ -27,7 +27,7 @@ angular.module('app.consoleHomeCtrl', [])
     $scope.showUpdateModal = function(obj) {
       var modalInstance = $modal.open({
         templateUrl: 'tpl/console/modal/AddUpdateIntroModal.html',
-        controller: 'UpdateModalCtrl',
+        controller: 'UpdateIntroductionModalCtrl',
         size: 'lg',
         resolve: {
           item: function () {
@@ -42,7 +42,7 @@ angular.module('app.consoleHomeCtrl', [])
       });
     };
   }])
-  .controller('AddModalCtrl', ['$scope','$modalInstance','$http', function ($scope,$modalInstance,$http) {
+  .controller('AddIntroductionModalCtrl', ['$scope','$modalInstance','$http', function ($scope,$modalInstance,$http) {
     $scope.inSubmit=false;
     $scope.alerts = [];
     $scope.obj={};
@@ -68,7 +68,7 @@ angular.module('app.consoleHomeCtrl', [])
       $scope.alerts.splice(index, 1);
     };
   }])
-  .controller('UpdateModalCtrl', ['$scope','$modalInstance','$http','item', function ($scope,$modalInstance,$http,item) {
+  .controller('UpdateIntroductionModalCtrl', ['$scope','$modalInstance','$http','item', function ($scope,$modalInstance,$http,item) {
     $scope.inSubmit=false;
     $scope.alerts = [];
     $scope.obj={};

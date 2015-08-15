@@ -16,7 +16,7 @@ angular.module('app.consoleHospitalCtrl', [])
     $scope.showAddModal = function() {
       var modalInstance = $modal.open({
         templateUrl: 'tpl/console/modal/AddUpdateHospitalModal.html',
-        controller: 'AddModalCtrl',
+        controller: 'AddHospitalModalCtrl',
         size: 'lg'
       });
 
@@ -28,7 +28,7 @@ angular.module('app.consoleHospitalCtrl', [])
     $scope.showUpdateModal = function(obj) {
       var modalInstance = $modal.open({
         templateUrl: 'tpl/console/modal/AddUpdateHospitalModal.html',
-        controller: 'UpdateModalCtrl',
+        controller: 'UpdateHospitalModalCtrl',
         size: 'lg',
         resolve: {
           item: function () {
@@ -43,7 +43,7 @@ angular.module('app.consoleHospitalCtrl', [])
       });
     };
   }])
-  .controller('AddModalCtrl', ['$scope','$modalInstance','$http', function ($scope,$modalInstance,$http) {
+  .controller('AddHospitalModalCtrl', ['$scope','$modalInstance','$http', function ($scope,$modalInstance,$http) {
     $scope.inSubmit=false;
     $scope.alerts = [];
     $scope.obj={};
@@ -69,7 +69,7 @@ angular.module('app.consoleHospitalCtrl', [])
       $scope.alerts.splice(index, 1);
     };
   }])
-  .controller('UpdateModalCtrl', ['$scope','$modalInstance','$http','item', function ($scope,$modalInstance,$http,item) {
+  .controller('UpdateHospitalModalCtrl', ['$scope','$modalInstance','$http','item', function ($scope,$modalInstance,$http,item) {
     $scope.inSubmit=false;
     $scope.alerts = [];
     $scope.obj={};

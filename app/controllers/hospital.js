@@ -74,7 +74,31 @@ module.exports = {
     }
   },
   update: function(req, res) {
-
+    if(req.body.id) {
+      HospitalModels.findOne({_id:req.body.id}, function(err, item) {
+        if (err) {
+          res.json(500, {error: "Error finding intro item["+req.body.id+"]: " + err.message});
+        }
+        if (item) {
+          item.address=req.body.address;
+          item.homepage=req.body.homepage;
+          item.introduction=req.body.introduction;
+          item.name=req.body.name;
+          item.name_en=req.body.name_en;
+          item.ranking=req.body.ranking;
+          item.save(function(err) {
+            if (err) {
+              res.json(500, {error: "Error updating hospital item: " + err.message});
+            }
+            res.json(200, item);
+          });
+        } else {
+          res.json(500, {error: "intro item["+req.body.id+"] not found"});
+        }
+      });
+    } else {
+      res.json(500, { error: 'Bad request: missing hospital id' });
+    }
   },
   delete: function(req, res) {
     if(req.params.id) {
