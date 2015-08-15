@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.consoleHospitalCtrl', [])
-    .controller('HospitalCtrl', ['$rootScope', '$state', '$scope', '$http','$modal', function($rootScope, $state, $scope, $http,$modal) {
+    .controller('HospitalCtrl', ['$rootScope', '$state', '$scope', '$http','$modal','commonService', function($rootScope, $state, $scope, $http,$modal,commonService) {
       $http.get("/rest/hospital").success(function (data) {
         $scope.hospitalList = data;
         console.log($scope.hospitalList)
@@ -10,23 +10,7 @@ angular.module('app.consoleHospitalCtrl', [])
     $scope.hospitalList = [{"_id":"55977aa4d116d2454fdf3856","name":"梅奥诊所","name_en":"Mayo Clinic","introduction":"Mayo Clinic in Rochester, MN is ranked nationally in 15 adult and 9 pediatric specialties.","address":"200 S. W. First Street","homepage":"http://www.mayoclinic.org","ranking":2,"__v":0},{"_id":"55977acad116d2454fdf3857","name":"梅奥诊所","name_en":"Mayo Clinic","introduction":"Mayo Clinic in Rochester, MN is ranked nationally in 15 adult and 9 pediatric specialties.","address":"200 S. W. First Street","homepage":"http://www.mayoclinic.org","ranking":1,"__v":0},{"_id":"55977b05d116d2454fdf3858","name":"梅奥诊所","name_en":"Mayo Clinic","introduction":"Mayo Clinic in Rochester, MN is ranked nationally in 15 adult and 9 pediatric specialties.","address":"200 S. W. First Street","homepage":"http://www.mayoclinic.org!!","ranking":3,"__v":0}];
 
     $scope.showDeleteModal = function(obj) {
-      var modalInstance = $modal.open({
-        templateUrl: 'tpl/console/modal/deleteObjectModal.html',
-        controller: 'DeleteModalCtrl',
-        size: 'lg',
-        resolve: {
-          item: function () {
-            var item = {};
-            item.name=obj.name_en;
-            item.url='/rest/hospital/'+obj._id;
-            return item;
-          }
-        }
-      });
-
-      modalInstance.result.then(function (platformId) {
-        $state.go($state.current, {}, {reload: true});
-      });
+      commonService.showDeleteModal(obj.name_en,'/rest/hospital/'+obj._id);
     };
 
     $scope.showAddModal = function() {

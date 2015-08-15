@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.consoleHomeCtrl', [])
-    .controller('HomeCtrl', ['$rootScope', '$state', '$scope', '$http','$modal', function($rootScope, $state, $scope, $http,$modal) {
+    .controller('HomeCtrl', ['$rootScope', '$state', '$scope', '$http','$modal','commonService', function($rootScope, $state, $scope, $http,$modal,commonService) {
       $http.get("/rest/intro").success(function (data) {
         $scope.introList = data;
       });
@@ -9,23 +9,7 @@ angular.module('app.consoleHomeCtrl', [])
     $scope.introList = [{"_id":"559768867c9ed401db7c2559","title":"再生医疗","description":"再生医疗介绍.","index":1,"__v":0},{"_id":"55977225f5e7a4cc159b7446","title":"人性化治疗","description":"人性化治疗介绍.","index":2,"__v":0}]
 
     $scope.showDeleteModal = function(obj) {
-      var modalInstance = $modal.open({
-        templateUrl: 'tpl/console/modal/deleteObjectModal.html',
-        controller: 'DeleteModalCtrl',
-        size: 'lg',
-        resolve: {
-          item: function () {
-            var item = {};
-            item.name=obj.title;
-            item.url='/rest/intro/'+obj._id;
-            return item;
-          }
-        }
-      });
-
-      modalInstance.result.then(function (platformId) {
-        $state.go($state.current, {}, {reload: true});
-      });
+      commonService.showDeleteModal(obj.title,'/rest/intro/'+obj._id);
     };
 
     $scope.showAddModal = function() {
