@@ -12,23 +12,23 @@
       <form name="form" class="form-horizontal form-validation">
         <fieldset>
           <div class="form-group">
-            <label class="col-md-4 control-label text-right">Title</label>
-            <div class="col-md-5">
+            <label class="col-md-3 control-label text-right">Title</label>
+            <div class="col-md-7">
               <input placeholder="Please enter title" class="form-control input-md" required type="text"
                      ng-model="obj.title">
               <span class="help-block">*required</span>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-4 control-label text-right">Description</label>
-            <div class="col-md-5">
-              <input placeholder="Please enter description" class="form-control input-md" required type="text"  ng-model="obj.description">
+            <label class="col-md-3 control-label text-right">Description</label>
+            <div class="col-md-7">
+              <textarea placeholder="Please enter description" rows="10" class="form-control input-md" required type="text" ng-model="obj.description"></textarea>
               <span class="help-block">*required</span>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-4 control-label text-right">次序</label>
-            <div class="col-md-5">
+            <label class="col-md-3 control-label text-right">次序</label>
+            <div class="col-md-7">
               <input placeholder="Please enter index starting between 1 to 6" class="form-control input-md" required type="number" min="1" max="6" ng-model="obj.index">
               <span class="help-block">*required</span>
             </div>
