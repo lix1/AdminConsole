@@ -1,0 +1,49 @@
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-info b-a" ng-repeat="hospital in hospitalList| orderBy:'ranking'">
+              <div class="panel-heading clearfix">
+                <span class="badge badge-empty">{{hospital.ranking}}</span>
+                <span class="text-lg">{{hospital.name}}</span>
+
+                <div class="pull-right">
+                  <button class="btn btn-rounded btn-icon btn-warning" ng-click="showUpdateModal(hospital)"><i class="fa fa-edit"></i></button>
+                  <button class="btn btn-rounded btn-icon btn-danger" ng-click="showDeleteModal(hospital)"><i class="fa fa-trash"></i></button>
+                </div>
+              </div>
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <span>
+                    <i class="fa fa-hospital-o m-r-xs"></i>
+                    <small class="text-muted">{{hospital.name_en}}</small>
+                  </span>
+                </li>
+                <li class="list-group-item">
+                  <span>
+                    <i class="icon-doc m-r-xs"></i>
+                    <small class="text-muted">{{hospital.introduction}}</small>
+                  </span>
+                </li>
+                <li class="list-group-item">
+                  <span>
+                  <i class="icon-paper-plane m-r-xs"></i>
+                  <small class="text-muted">{{hospital.address}}</small>
+                  </span>
+                </li>
+                <li class="list-group-item">
+                  <span>
+                  <i class="icon-link m-r-xs"></i>
+                  <small class="text-muted">{{hospital.homepage}}</small>
+                  </span>
+                </li>
+              </ul>
+            </div>
+        </div>
+        <div class="col-md-12">
+          <button class="btn m-b-xs btn-success" ng-click="showAddModal()" tooltip-placement="bottom" tooltip="add new introduction to the list">
+            <i class="fa fa-plus m-r-xs"></i>Add
+          </button>
+        </div>
+    </div>
+</div>
+

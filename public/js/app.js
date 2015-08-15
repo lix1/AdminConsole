@@ -14,7 +14,9 @@ var app = angular.module('app', [
     'ui.validate',
     'ui.router.tabs',
     'oc.lazyLoad',
-    'app.consoleCtrl',
+    'app.consoleHomeCtrl',
+    'app.consoleHospitalCtrl',
+    'app.consoleMainCtrl',
     'app.filters',
     'app.services',
     'app.directives',
@@ -42,7 +44,6 @@ var app = angular.module('app', [
         app.value      = $provide.value;
 
         $urlRouterProvider
-            .when('/app/hospitals','/app/hospitals/list')
             .otherwise('/app/home');
         $stateProvider
             .state('app', {
@@ -57,23 +58,16 @@ var app = angular.module('app', [
                 url:        '/home',
                 controller: 'HomeCtrl',
                 templateUrl:'tpl/console/home.html'
-            }).state('app.console.services', {
+            })
+            .state('app.console.hospitals', {
+              url: '/hospitals',
+              controller: 'HospitalCtrl',
+              templateUrl:'tpl/console/hospital.html'
+            })
+            .state('app.console.services', {
                 url:        '/services',
                 controller: 'ServicesCtrl',
                 templateUrl:'tpl/console/services.html'
-            })
-            .state('app.console.hospitals', {
-                url: '/hospitals',
-                templateUrl:'tpl/console/hospitals.html'
-            })
-            .state('app.console.hospitals.list', {
-                url: '/list',
-                views: {
-                    'list': {
-                        templateUrl:'tpl/console/hospitalList.html',
-                        controller: 'HospitalsCtrl'
-                    }
-                }
             })
             .state('app.tabs.hospitals.detail', {
                 url: '/{id}',

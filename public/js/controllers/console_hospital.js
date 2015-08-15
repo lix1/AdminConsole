@@ -1,12 +1,13 @@
 'use strict';
 
-angular.module('app.consoleHomeCtrl', [])
-    .controller('HomeCtrl', ['$rootScope', '$state', '$scope', '$http','$modal', function($rootScope, $state, $scope, $http,$modal) {
-      $http.get("/rest/intro").success(function (data) {
-        $scope.introList = data;
+angular.module('app.consoleHospitalCtrl', [])
+    .controller('HospitalCtrl', ['$rootScope', '$state', '$scope', '$http','$modal', function($rootScope, $state, $scope, $http,$modal) {
+      $http.get("/rest/hospital").success(function (data) {
+        $scope.hospitalList = data;
+        console.log($scope.hospitalList)
       });
 
-    $scope.introList = [{"_id":"559768867c9ed401db7c2559","title":"再生医疗","description":"再生医疗介绍.","index":1,"__v":0},{"_id":"55977225f5e7a4cc159b7446","title":"人性化治疗","description":"人性化治疗介绍.","index":2,"__v":0}]
+    $scope.hospitalList = [{"_id":"55977aa4d116d2454fdf3856","name":"梅奥诊所","name_en":"Mayo Clinic","introduction":"Mayo Clinic in Rochester, MN is ranked nationally in 15 adult and 9 pediatric specialties.","address":"200 S. W. First Street","homepage":"http://www.mayoclinic.org","ranking":2,"__v":0},{"_id":"55977acad116d2454fdf3857","name":"梅奥诊所","name_en":"Mayo Clinic","introduction":"Mayo Clinic in Rochester, MN is ranked nationally in 15 adult and 9 pediatric specialties.","address":"200 S. W. First Street","homepage":"http://www.mayoclinic.org","ranking":1,"__v":0},{"_id":"55977b05d116d2454fdf3858","name":"梅奥诊所","name_en":"Mayo Clinic","introduction":"Mayo Clinic in Rochester, MN is ranked nationally in 15 adult and 9 pediatric specialties.","address":"200 S. W. First Street","homepage":"http://www.mayoclinic.org!!","ranking":3,"__v":0}];
 
     $scope.showDeleteModal = function(obj) {
       var modalInstance = $modal.open({
@@ -16,8 +17,8 @@ angular.module('app.consoleHomeCtrl', [])
         resolve: {
           item: function () {
             var item = {};
-            item.name=obj.title;
-            item.url='/rest/intro/'+obj._id;
+            item.name=obj.name_en;
+            item.url='/rest/hospital/'+obj._id;
             return item;
           }
         }
@@ -30,7 +31,7 @@ angular.module('app.consoleHomeCtrl', [])
 
     $scope.showAddModal = function() {
       var modalInstance = $modal.open({
-        templateUrl: 'tpl/console/modal/AddUpdateIntroModal.html',
+        templateUrl: 'tpl/console/modal/AddUpdateHospitalModal.html',
         controller: 'AddModalCtrl',
         size: 'lg'
       });
@@ -42,7 +43,7 @@ angular.module('app.consoleHomeCtrl', [])
 
     $scope.showUpdateModal = function(obj) {
       var modalInstance = $modal.open({
-        templateUrl: 'tpl/console/modal/AddUpdateIntroModal.html',
+        templateUrl: 'tpl/console/modal/AddUpdateHospitalModal.html',
         controller: 'UpdateModalCtrl',
         size: 'lg',
         resolve: {
@@ -62,17 +63,17 @@ angular.module('app.consoleHomeCtrl', [])
     $scope.inSubmit=false;
     $scope.alerts = [];
     $scope.obj={};
-    $scope.modalTitle='Add New Introduction';
+    $scope.modalTitle='Add New Hospital';
 
     $scope.submit = function() {
       $scope.inSubmit=true;
-      $http.post('/rest/intro',$scope.obj).
+      $http.post('/rest/hospital',$scope.obj).
         success(function(data, status, headers, config) {
           $scope.inSubmit=true;
           $modalInstance.close();
         }).
         error(function(data, status, headers, config) {
-          $scope.alerts.push({type: 'danger',msg: 'Error adding introduction - ' + status + ':' + data.message});
+          $scope.alerts.push({type: 'danger',msg: 'Error adding hospital - ' + status + ':' + data.message});
           $scope.inSubmit=false;
         });
     };
@@ -89,20 +90,24 @@ angular.module('app.consoleHomeCtrl', [])
     $scope.alerts = [];
     $scope.obj={};
     $scope.obj.id=item._id;
-    $scope.obj.title=item.title;
-    $scope.obj.description=item.description;
-    $scope.obj.index=item.index;
-    $scope.modalTitle='Update Introduction ' + item.title;
+    $scope.obj.name=item.name;
+    $scope.obj.name_en=item.name_en;
+    $scope.obj.introduction=item.introduction;
+    $scope.obj.address=item.address;
+    $scope.obj.homepage=item.homepage;
+    $scope.obj.ranking=item.ranking;
+    $scope.modalTitle='Update Hospital ' + item.name;
 
     $scope.submit = function() {
+      console.log("submitting")
       $scope.inSubmit=true;
-      $http.put('/rest/intro',$scope.obj).
+      $http.put('/rest/hospital',$scope.obj).
         success(function(data, status, headers, config) {
           $scope.inSubmit=true;
           $modalInstance.close();
         }).
         error(function(data, status, headers, config) {
-          $scope.alerts.push({type: 'danger',msg: 'Error adding introduction - ' + status + ':' + data.message});
+          $scope.alerts.push({type: 'danger',msg: 'Error adding hospital - ' + status + ':' + data.message});
           $scope.inSubmit=false;
         });
     };
