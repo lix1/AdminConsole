@@ -1,6 +1,7 @@
 var home = require('../app/controllers/home'),
   intro = require('../app/controllers/intro'),
-  hospital = require('../app/controllers/hospital');
+  hospital = require('../app/controllers/hospital'),
+  process = require('../app/controllers/process');
 
 module.exports.initialize = function(app, router) {
   router.get('/', home.index);
@@ -15,6 +16,12 @@ module.exports.initialize = function(app, router) {
   app.post('/rest/hospital', hospital.create);
   app.put('/rest/hospital', hospital.update);
   app.delete('/rest/hospital/:id', hospital.delete);
+
+  app.get('/rest/process', process.all);
+  app.get('/rest/process/:id', process.get);
+  app.post('/rest/process', process.create);
+  app.put('/rest/process', process.update);
+  app.delete('/rest/process/:id', process.delete);
 
   app.get('/adminConsole', function(req, res){
     res.render('index.jade');

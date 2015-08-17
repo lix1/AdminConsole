@@ -1,0 +1,37 @@
+<div class="wrapper-sm">
+  <div class="row">
+    <div class="col-lg-12">
+      <ul class="timeline">
+        <li class="tl-header">
+          <div class="btn btn-info">中国患者出国看病申请流程</div>
+        </li>
+
+        <li class="tl-item" ng-repeat="process in processList">
+          <div class="tl-wrap b-success">
+            <span class="tl-date">{{$index+1}}</span>
+            <div class="tl-content panel padder b-a w-auto w-auto-xs">
+              <span class="arrow left pull-up"></span>
+              <div class="text-lt m-b-sm">
+                <span>{{process.title}}</span>
+              </div>
+              <div class="panel-body pull-in b-t b-light">
+                {{process.description}}
+              </div>
+              <div class="panel-footer pull-in b-t b-light">
+                <button class="btn btn-rounded btn-icon btn-warning" ng-click="showUpdateModal(process)"><i class="fa fa-edit"></i></button>
+                <button class="btn btn-rounded btn-icon btn-danger m-l-xs" ng-click="showDeleteModal(process)"><i class="fa fa-trash"></i></button>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-12 m-t-lg">
+      <button class="btn m-b-xs btn-success" ng-click="showAddModal()" tooltip-placement="bottom" tooltip="add new process to the list">
+        <i class="fa fa-plus m-r-xs"></i>Add
+      </button>
+    </div>
+  </div>
+</div>
+
+

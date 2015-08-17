@@ -77,7 +77,7 @@ module.exports = {
     if(req.body.id) {
       HospitalModels.findOne({_id:req.body.id}, function(err, item) {
         if (err) {
-          res.json(500, {error: "Error finding intro item["+req.body.id+"]: " + err.message});
+          res.json(500, {error: "Error finding hospital item["+req.body.id+"]: " + err.message});
         }
         if (item) {
           item.address=req.body.address;
@@ -93,7 +93,7 @@ module.exports = {
             res.json(200, item);
           });
         } else {
-          res.json(500, {error: "intro item["+req.body.id+"] not found"});
+          res.json(500, {error: "Hospital item["+req.body.id+"] not found"});
         }
       });
     } else {

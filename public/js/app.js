@@ -17,6 +17,7 @@ var app = angular.module('app', [
     'app.consoleHomeCtrl',
     'app.consoleHospitalCtrl',
     'app.consoleMainCtrl',
+    'app.consoleProcessCtrl',
     'app.filters',
     'app.services',
     'app.directives',
@@ -64,10 +65,10 @@ var app = angular.module('app', [
               controller: 'HospitalCtrl',
               templateUrl:'tpl/console/hospital.html'
             })
-            .state('app.console.services', {
-                url:        '/services',
-                controller: 'ServicesCtrl',
-                templateUrl:'tpl/console/services.html'
+            .state('app.console.processes', {
+                url:        '/processes',
+                controller: 'ProcessCtrl',
+                templateUrl:'tpl/console/processes.html'
             })
             .state('app.tabs.hospitals.detail', {
                 url: '/{id}',
